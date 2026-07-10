@@ -284,7 +284,7 @@ footer a{color:#a9b3cc;text-decoration:none;margin:0 8px;font-size:13px}
 </div></footer>
 <script>
 (function(){
-  var FORM_ENDPOINT="https://formsubmit.co/ajax/azad.khan@worksource.co.in";
+  var FORM_URL="https://docs.google.com/forms/d/e/1FAIpQLScQPwPc6HwVonDrpZQMk_sURUFRUkkjz2eM7Qhx0tlBM_z-ow/formResponse";
   var WA_NUMBER = "919769498862";
   var $ = function(id){return document.getElementById(id)};
   var fmt = function(n){return "₹" + Math.round(n).toLocaleString("en-IN")};
@@ -324,15 +324,18 @@ footer a{color:#a9b3cc;text-decoration:none;margin:0 8px;font-size:13px}
     e.preventDefault();
     var f = e.target, btn = $("leadBtn");
     btn.disabled = true; btn.textContent = "Sending…";
-    var payload = { name:f.name.value, company:f.company.value, email:f.email.value, phone:f.phone.value,
-                    _subject:"New OTMOS calculator lead: " + f.company.value, _captcha:"false", _cc:"azad@otmos.io" };
-    if(last) for(var k in last) payload["calc_"+k] = last[k];
-    fetch(FORM_ENDPOINT,{
-      method:"POST", headers:{"Content-Type":"application/json","Accept":"application/json"},
-      body:JSON.stringify(payload)
-    }).then(function(r){
-      if(r.ok){ f.style.display="none"; document.getElementById("leadSuccess").classList.add("show"); }
-      else throw new Error();
+    var details = "CALCULATOR LEAD";
+    if(last){ details += " | " + JSON.stringify(last); }
+    var body = new URLSearchParams();
+    body.append("entry.1326655517", f.name.value);
+    body.append("entry.2068226046", f.email.value);
+    body.append("entry.1771119810", f.phone.value);
+    body.append("entry.254745707", f.company.value);
+    body.append("entry.1144178132", details);
+    fetch(FORM_URL,{ method:"POST", mode:"no-cors",
+      headers:{"Content-Type":"application/x-www-form-urlencoded"}, body:body.toString()
+    }).then(function(){
+      f.style.display="none"; document.getElementById("leadSuccess").classList.add("show");
     }).catch(function(){
       btn.disabled=false; btn.textContent="Send Me the Full Breakdown — Free";
       alert("Couldn't send right now — please reach us via the WhatsApp link instead.");
