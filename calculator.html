@@ -2,9 +2,33 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-47S1V63F9G"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-47S1V63F9G');
+</script>
+<!-- /GA4 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Savings Calculator — OTMOS</title>
 <link rel="icon" type="image/png" href="favicon.png">
+<!-- OG -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OTMOS">
+<meta property="og:title" content="Free Savings Calculator — OTMOS">
+<meta property="og:description" content="Find out what manual work costs your company each year, in exact ₹. Conservative, defensible numbers in 90 seconds — free, no signup.">
+<meta property="og:url" content="https://otmos.io/calculator.html">
+<meta property="og:image" content="https://otmos.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Savings Calculator — OTMOS">
+<meta name="twitter:description" content="Find out what manual work costs your company each year, in exact ₹. Conservative, defensible numbers in 90 seconds — free, no signup.">
+<meta name="twitter:image" content="https://otmos.io/og-image.png">
+<link rel="canonical" href="https://otmos.io/calculator.html">
+<!-- /OG -->
 <meta name="description" content="Free calculator: find out what manual work costs your company each year, in exact ₹. Takes 90 seconds.">
 <style>
 :root{--bg:#ffffff;--blue:#2653f1;--cyan:#28b5e8;--navy:#141c33;--ink:#1c2440;--grey:#5a6478;--card:#f7f9ff;--light:#eef2fe;--border:#dfe6f9;--green:#0e9f6e;--amber:#b7791f;--amber-bg:#fff8e6}
@@ -306,7 +330,7 @@ footer a{color:#a9b3cc;text-decoration:none;margin:0 8px;font-size:13px}
     $("mMonthly").textContent = fmt(annual/12);
     $("mPer").textContent     = fmt(perEmployee);
     $("warnSanity").classList.toggle("show", perEmployee>100000);
-    $("result").classList.add("show");
+    $("result").classList.add("show"); if(window.gtag)gtag("event","calculator_complete",{sector:$("sector").value,est_savings:Math.round(annual)});
     $("result").scrollIntoView({behavior:"smooth",block:"nearest"});
     last = {sector:$("sector").value, totalEmployees:$("totalEmp").value, departments:depts.join(", "),
             peopleDoingManualWork:people, avgMonthlySalary:salary, manualHoursPerWeek:hours,
@@ -335,7 +359,7 @@ footer a{color:#a9b3cc;text-decoration:none;margin:0 8px;font-size:13px}
     fetch(FORM_URL,{ method:"POST", mode:"no-cors",
       headers:{"Content-Type":"application/x-www-form-urlencoded"}, body:body.toString()
     }).then(function(){
-      f.style.display="none"; document.getElementById("leadSuccess").classList.add("show");
+      if(window.gtag)gtag("event","lead_submit",{form:"calculator"}); f.style.display="none"; document.getElementById("leadSuccess").classList.add("show");
     }).catch(function(){
       btn.disabled=false; btn.textContent="Send Me the Full Breakdown — Free";
       alert("Couldn't send right now — please reach us via the WhatsApp link instead.");

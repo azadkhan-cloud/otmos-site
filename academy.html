@@ -2,9 +2,33 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-47S1V63F9G"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-47S1V63F9G');
+</script>
+<!-- /GA4 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OTMOS Academy — Become an AI-Ready Professional</title>
 <link rel="icon" type="image/png" href="favicon.png">
+<!-- OG -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OTMOS">
+<meta property="og:title" content="OTMOS Academy — Become AI-Ready">
+<meta property="og:description" content="A 6-week AI career transition program with certification and 90-day placement support. Reserve your seat — batches fill in order of sign-up.">
+<meta property="og:url" content="https://otmos.io/academy.html">
+<meta property="og:image" content="https://otmos.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OTMOS Academy — Become AI-Ready">
+<meta name="twitter:description" content="A 6-week AI career transition program with certification and 90-day placement support. Reserve your seat — batches fill in order of sign-up.">
+<meta name="twitter:image" content="https://otmos.io/og-image.png">
+<link rel="canonical" href="https://otmos.io/academy.html">
+<!-- /OG -->
 <meta name="description" content="OTMOS Academy: a 6-week AI career transition program with certification and 90-day placement support. Become AI-compatible.">
 <style>
 :root{--bg:#ffffff;--blue:#2653f1;--cyan:#28b5e8;--navy:#141c33;--ink:#1c2440;--grey:#5a6478;--card:#f7f9ff;--light:#eef2fe;--border:#dfe6f9;--green:#0e9f6e;--amber:#b7791f;--amber-bg:#fff8e6}
@@ -365,7 +389,7 @@ footer a{color:#a9b3cc;text-decoration:none;margin:0 8px;font-size:13px}
     fetch(FORM_URL,{method:"POST",mode:"no-cors",
       headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body.toString()
     }).then(function(){
-      f.style.display="none";document.getElementById("acadSuccess").classList.add("show");
+      if(window.gtag)gtag("event","academy_reserve",{track:f.track.value}); f.style.display="none";document.getElementById("acadSuccess").classList.add("show");
     }).catch(function(){
       btn.disabled=false;btn.textContent="Reserve My Seat — Free";
       alert("Couldn't submit right now — please use the WhatsApp link below instead.");
