@@ -284,7 +284,7 @@ footer a{color:#a9b3cc;text-decoration:none;margin:0 8px;font-size:13px}
 </div></footer>
 <script>
 (function(){
-  var FORMSPREE_ID = "FORMSPREE_ID";           // ← replace with real Formspree form ID before publishing
+  var FORM_ENDPOINT="https://formsubmit.co/ajax/azad.khan@worksource.co.in";
   var WA_NUMBER = "919769498862";
   var $ = function(id){return document.getElementById(id)};
   var fmt = function(n){return "₹" + Math.round(n).toLocaleString("en-IN")};
@@ -325,9 +325,9 @@ footer a{color:#a9b3cc;text-decoration:none;margin:0 8px;font-size:13px}
     var f = e.target, btn = $("leadBtn");
     btn.disabled = true; btn.textContent = "Sending…";
     var payload = { name:f.name.value, company:f.company.value, email:f.email.value, phone:f.phone.value,
-                    _subject:"New OTMOS calculator lead: " + f.company.value };
+                    _subject:"New OTMOS calculator lead: " + f.company.value, _captcha:"false", _cc:"azad@otmos.io" };
     if(last) for(var k in last) payload["calc_"+k] = last[k];
-    fetch("https://formspree.io/f/"+FORMSPREE_ID,{
+    fetch(FORM_ENDPOINT,{
       method:"POST", headers:{"Content-Type":"application/json","Accept":"application/json"},
       body:JSON.stringify(payload)
     }).then(function(r){
