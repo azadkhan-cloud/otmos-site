@@ -63,6 +63,18 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .navlinks a.cta{color:#fff;background:var(--blue);padding:9px 15px;border-radius:8px}
 .navlinks a.academy{background:linear-gradient(90deg,var(--blue),var(--cyan));color:#fff;padding:9px 15px;border-radius:8px;font-weight:700}
 @media(max-width:960px){.navlinks a:not(.cta):not(.academy){display:none}}
+.lbl-sm{display:none}
+@media(max-width:600px){
+ nav .wrap{height:58px}
+ .logo img{height:30px!important}
+ .navlinks a.academy,.navlinks a.cta{padding:7px 11px;font-size:12.5px;margin-left:7px;border-radius:7px}
+ .lbl-lg{display:none}
+ .lbl-sm{display:inline}
+}
+@media(max-width:360px){
+ .logo img{height:26px!important}
+ .navlinks a.academy,.navlinks a.cta{padding:6px 9px;font-size:12px;margin-left:6px}
+}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:36px}
@@ -229,8 +241,8 @@ footer a{color:#a9b3cc;text-decoration:none;margin:0 8px;font-size:13px}
       <a class="" href="how-it-works.html">How It Works</a>
       <a class="" href="presentation.html">Presentation</a>
       <a class="" href="contact.html">Contact</a>
-      <a class="academy" href="academy.html">OTMOS Academy</a>
-      <a class="cta" href="calculator.html">Free Calculator</a>
+      <a class="academy" href="academy.html"><span class="lbl-lg">OTMOS Academy</span><span class="lbl-sm">Academy</span></a>
+      <a class="cta" href="calculator.html"><span class="lbl-lg">Free Calculator</span><span class="lbl-sm">Calculator</span></a>
       </div></div></nav>
 <main>
 
