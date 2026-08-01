@@ -30,20 +30,18 @@
     <div class="hub-wrap">
       <div class="hub">
         <svg class="hub-lines">
-          <line class="ln-autonomous"></line>
-          <line class="ln-academy"></line>
-          <circle class="dot-academy" r="2.5"></circle>
-          <line class="ln-hiros"></line>
-          <circle class="dot-hiros" r="2.5"></circle>
-          <path class="ln-aihrms"></path>
-          <path class="ln-growth"></path>
+          <line class="ln n1"></line>
+          <line class="ln n2"></line>
+          <line class="ln n3"></line>
+          <line class="ln n4"></line>
+          <line class="ln n5"></line>
         </svg>
         <div class="hub-center"><img src="/new/brand/otmos-logo.png" alt="OTMOS"></div>
         <a class="hub-node n1" href="/new/divisions/autonomous/index.html"><img src="/new/brand/icon-autonomous.png" alt="">Autonomous</a>
-        <a class="hub-node n2" href="/new/divisions/academy/index.html"><img src="/new/brand/icon-academy.png" alt="">Academy</a>
-        <a class="hub-node n3" href="/new/divisions/hiros/index.html"><img src="/new/brand/icon-hiros.png" alt="">HIROS</a>
+        <a class="hub-node n2" href="/new/divisions/hiros/index.html"><img src="/new/brand/icon-hiros.png" alt="">HIROS</a>
+        <a class="hub-node n3" href="/new/divisions/growth/index.html"><img src="/new/brand/icon-growth.png" alt="">Growth</a>
         <a class="hub-node n4" href="/new/divisions/aihrms/index.html"><img src="/new/brand/icon-aihrms.png" alt="">AIHRMS</a>
-        <a class="hub-node n5" href="/new/divisions/growth/index.html"><img src="/new/brand/icon-growth.png" alt="">Growth</a>
+        <a class="hub-node n5" href="/new/divisions/academy/index.html"><img src="/new/brand/icon-academy.png" alt="">Academy</a>
       </div>
       <p class="hub-hint">Click a division to learn more.</p>
     </div>
@@ -168,57 +166,47 @@
 
 <script>
 (function(){
-  function rel(el, hubRect){
-    var r = el.getBoundingClientRect();
-    return {
-      left: r.left - hubRect.left, top: r.top - hubRect.top,
-      right: r.right - hubRect.left, bottom: r.bottom - hubRect.top,
-      width: r.width, height: r.height,
-      cx: (r.left + r.right) / 2 - hubRect.left,
-      cy: (r.top + r.bottom) / 2 - hubRect.top
-    };
-  }
-  function draw(){
+  var order = ['n1','n2','n3','n4','n5'];
+  var colors = {n1:'#4a5fdc', n2:'#6b4fbb', n3:'#a3862f', n4:'#c4692f', n5:'#2e8b57'};
+  function positionNodes(){
     var hub = document.querySelector('.hub');
-    var svg = document.querySelector('.hub-lines');
-    if(!hub || !svg) return;
-    var hubRect = hub.getBoundingClientRect();
-    if(hubRect.width === 0 || hubRect.height === 0) return;
-    svg.setAttribute('viewBox', '0 0 ' + hubRect.width + ' ' + hubRect.height);
-
-    var center = rel(document.querySelector('.hub-center'), hubRect);
-    var n1 = rel(document.querySelector('.hub-node.n1'), hubRect);
-    var n2 = rel(document.querySelector('.hub-node.n2'), hubRect);
-    var n3 = rel(document.querySelector('.hub-node.n3'), hubRect);
-    var n4 = rel(document.querySelector('.hub-node.n4'), hubRect);
-    var n5 = rel(document.querySelector('.hub-node.n5'), hubRect);
-
-    var lnA = document.querySelector('.ln-autonomous');
-    lnA.setAttribute('x1', center.cx); lnA.setAttribute('y1', center.top);
-    lnA.setAttribute('x2', n1.cx); lnA.setAttribute('y2', n1.bottom);
-
-    var lnAc = document.querySelector('.ln-academy');
-    lnAc.setAttribute('x1', center.left); lnAc.setAttribute('y1', center.cy);
-    lnAc.setAttribute('x2', n2.right); lnAc.setAttribute('y2', n2.cy);
-    var dotAc = document.querySelector('.dot-academy');
-    dotAc.setAttribute('cx', (center.left + n2.right) / 2); dotAc.setAttribute('cy', center.cy);
-
-    var lnH = document.querySelector('.ln-hiros');
-    lnH.setAttribute('x1', center.right); lnH.setAttribute('y1', center.cy);
-    lnH.setAttribute('x2', n3.left); lnH.setAttribute('y2', n3.cy);
-    var dotH = document.querySelector('.dot-hiros');
-    dotH.setAttribute('cx', (center.right + n3.left) / 2); dotH.setAttribute('cy', center.cy);
-
-    var sx4 = center.left + center.width * 0.28;
-    var midY4 = center.bottom + (n4.top - center.bottom) * 0.6;
-    document.querySelector('.ln-aihrms').setAttribute('d',
-      'M' + sx4 + ',' + center.bottom + ' C ' + sx4 + ',' + midY4 + ' ' + n4.cx + ',' + midY4 + ' ' + n4.cx + ',' + n4.top);
-
-    var sx5 = center.left + center.width * 0.72;
-    var midY5 = center.bottom + (n5.top - center.bottom) * 0.6;
-    document.querySelector('.ln-growth').setAttribute('d',
-      'M' + sx5 + ',' + center.bottom + ' C ' + sx5 + ',' + midY5 + ' ' + n5.cx + ',' + midY5 + ' ' + n5.cx + ',' + n5.top);
+    if(!hub) return;
+    var w = hub.clientWidth, h = hub.clientHeight;
+    if(!w || !h) return;
+    var radius = 0.40 * Math.min(w, h);
+    var cx = w/2, cy = h/2;
+    order.forEach(function(cls, i){
+      var el = document.querySelector('.hub-node.' + cls);
+      if(!el) return;
+      var angle = (-90 + i * 72) * Math.PI / 180;
+      var x = cx + radius * Math.cos(angle);
+      var y = cy + radius * Math.sin(angle);
+      el.style.left = x + 'px';
+      el.style.top = y + 'px';
+    });
   }
+  function drawLines(){
+    var hub = document.querySelector('.hub');
+    if(!hub) return;
+    var hubRect = hub.getBoundingClientRect();
+    if(hubRect.width === 0) return;
+    var svg = document.querySelector('.hub-lines');
+    svg.setAttribute('viewBox', '0 0 ' + hubRect.width + ' ' + hubRect.height);
+    var centerEl = document.querySelector('.hub-center');
+    var cr = centerEl.getBoundingClientRect();
+    var ccx = (cr.left + cr.right)/2 - hubRect.left, ccy = (cr.top + cr.bottom)/2 - hubRect.top;
+    order.forEach(function(cls){
+      var node = document.querySelector('.hub-node.' + cls);
+      var line = document.querySelector('.hub-lines .ln.' + cls);
+      if(!node || !line) return;
+      var nr = node.getBoundingClientRect();
+      var ncx = (nr.left + nr.right)/2 - hubRect.left, ncy = (nr.top + nr.bottom)/2 - hubRect.top;
+      line.setAttribute('x1', ccx); line.setAttribute('y1', ccy);
+      line.setAttribute('x2', ncx); line.setAttribute('y2', ncy);
+      line.setAttribute('stroke', colors[cls]);
+    });
+  }
+  function draw(){ positionNodes(); drawLines(); }
   function ready(){ draw(); setTimeout(draw, 60); setTimeout(draw, 300); }
   if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', ready); } else { ready(); }
   window.addEventListener('load', draw);
