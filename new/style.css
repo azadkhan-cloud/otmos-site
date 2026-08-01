@@ -80,9 +80,9 @@ footer{border-top:1px solid var(--border);padding:44px 0 28px;color:var(--grey);
 @media(max-width:700px){.foot-grid{grid-template-columns:1fr 1fr}}
 .foot-grid h4{color:var(--navy);font-size:.85rem;margin:0 0 12px}
 .foot-grid ul{list-style:none;padding:0;margin:0}
-.foot-grid li{margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.foot-grid li{margin-bottom:10px;display:flex;align-items:center;gap:9px}
 .foot-grid img{height:32px;width:auto;margin-bottom:14px}
-.foot-dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.foot-dot-icon{width:18px;height:18px;flex:none;margin-bottom:0}
 .foot-bottom{border-top:1px solid var(--border);margin-top:32px;padding-top:20px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:.85rem}
 
 .eyebrow-inline{font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:.85rem;color:var(--blue)}
