@@ -33,17 +33,10 @@ header{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:bl
 .btn.outline{border:2px solid var(--border);color:var(--navy);background:#fff}
 .btn.outline:hover{border-color:var(--blue);color:var(--blue)}
 
-.div-badge-wrap{display:flex;justify-content:center;margin-bottom:26px}
-.div-badge{display:inline-flex;align-items:center;gap:14px;border-radius:16px;padding:14px 24px}
-.div-badge img{height:40px;width:40px;flex:none}
-.div-badge-text{text-align:left;line-height:1.3}
-.div-badge-text .dname{display:block;font-weight:800;font-size:1.2rem;letter-spacing:.01em}
-.div-badge-text .dby{display:block;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-top:2px}
-.div-badge.blue{background:var(--c-autonomous-bg);color:var(--c-autonomous)}
-.div-badge.green{background:var(--c-academy-bg);color:var(--c-academy)}
-.div-badge.purple{background:var(--c-hiros-bg);color:var(--c-hiros)}
-.div-badge.orange{background:var(--c-aihrms-bg);color:var(--c-aihrms)}
-.div-badge.gold{background:var(--c-growth-bg);color:var(--c-growth)}
+.div-hero-brand{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:22px}
+.div-hero-name{display:flex;align-items:center;gap:10px;font-size:1.4rem;font-weight:800;letter-spacing:.01em}
+.div-hero-name img{height:32px;width:32px}
+.div-hero-by{font-size:.7rem;font-weight:800;letter-spacing:.14em;color:var(--grey);text-transform:uppercase}
 
 section{padding:56px 0}
 section.tint{background:var(--light)}
