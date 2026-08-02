@@ -30,13 +30,16 @@ header{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:bl
 .pillnav a:hover{border-color:var(--blue);color:var(--blue)}
 
 .btn-row{display:flex;gap:12px;justify-content:center;margin-top:26px;flex-wrap:wrap}
-.btn.outline{border:2px solid var(--border);color:var(--navy);background:#fff}
-.btn.outline:hover{border-color:var(--blue);color:var(--blue)}
+.btn.outline{border:2px solid var(--blue);color:var(--blue);background:#fff}
+.btn.outline:hover{background:var(--light)}
 
 .div-hero-brand{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:22px}
-.div-hero-name{display:flex;align-items:center;gap:10px;font-size:1.4rem;font-weight:800;letter-spacing:.01em}
-.div-hero-name img{height:32px;width:32px}
-.div-hero-by{font-size:.7rem;font-weight:800;letter-spacing:.14em;color:var(--grey);text-transform:uppercase}
+.div-hero-name{display:flex;align-items:center;gap:10px;font-size:2rem;font-weight:800;letter-spacing:.01em}
+.div-hero-name img{height:44px;width:44px}
+.div-hero-by{font-size:.72rem;font-weight:800;letter-spacing:.14em;color:var(--grey);text-transform:uppercase}
+
+.hero-card{background:var(--light);border-radius:28px;padding:64px 56px}
+@media(max-width:700px){.hero-card{padding:44px 24px}}
 
 section{padding:56px 0}
 section.tint{background:var(--light)}
@@ -72,7 +75,7 @@ p.lead{text-align:center;color:var(--grey);max-width:660px;margin:0 auto 40px}
 .cta-band{background:var(--navy);color:#fff;border-radius:20px;padding:48px 40px;text-align:center}
 .cta-band h2{color:#fff}
 .cta-band p{color:#c7cee8;max-width:560px;margin:0 auto 24px}
-.btn{display:inline-block;padding:12px 26px;border-radius:8px;font-weight:700;font-size:.95rem}
+.btn{display:inline-block;padding:14px 28px;border-radius:10px;font-weight:700;font-size:.95rem}
 .btn.primary{background:var(--blue);color:#fff}
 .btn.ghost{border:2px solid rgba(255,255,255,.4);color:#fff;margin-left:12px}
 
