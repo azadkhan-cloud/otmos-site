@@ -36,7 +36,7 @@ header{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:bl
 .div-hero-brand{display:flex;flex-direction:column;align-items:center;margin-bottom:28px}
 .div-hero-name{display:flex;align-items:center;gap:16px;font-size:60px;font-weight:400;letter-spacing:-1.5px}
 .div-hero-name img{height:70px;width:70px}
-.div-hero-by{font-size:11.5px;font-weight:500;letter-spacing:4.5px;color:#252A38;margin-top:2px}
+.div-hero-by{align-self:flex-end;font-size:11.5px;font-weight:500;letter-spacing:4.5px;color:#252A38;margin-top:2px}
 
 .hero-card{background:linear-gradient(135deg,#EFF2FE 0%,#EDF4FE 52%,#EDF4FE 100%);border-radius:28px;padding:70px 60px}
 .hero-card h1{font-size:62px;font-weight:800;line-height:1.08;letter-spacing:-2px;max-width:1100px}
@@ -44,7 +44,7 @@ header{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:bl
 .hero-card .sub2{font-size:16.5px;color:#667085;margin-top:11px}
 .hero-card .btn{padding:17px 32px;font-size:16.5px;font-weight:700;border-radius:8px}
 .hero-card .btn.primary{background:#3161D7}
-@media(max-width:700px){.hero-card{padding:48px 24px}.div-hero-name{font-size:2rem}.div-hero-name img{height:40px;width:40px}.hero-card h1{font-size:2.2rem}}
+@media(max-width:700px){.hero-card{padding:48px 24px}.div-hero-name{font-size:2rem}.div-hero-name img{height:40px;width:40px}.hero-card h1{font-size:2.2rem}.div-hero-by{align-self:center}}
 
 section{padding:56px 0}
 section.tint{background:var(--light)}
