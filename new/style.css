@@ -29,17 +29,21 @@ header{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:bl
 .pillnav a{border:1px solid var(--border);background:var(--card);padding:8px 16px;border-radius:999px;font-weight:700;font-size:.9rem}
 .pillnav a:hover{border-color:var(--blue);color:var(--blue)}
 
-.btn-row{display:flex;gap:12px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+.btn-row{display:flex;gap:16px;justify-content:center;margin-top:32px;flex-wrap:wrap}
 .btn.outline{border:2px solid var(--blue);color:var(--blue);background:#fff}
 .btn.outline:hover{background:var(--light)}
 
-.div-hero-brand{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:22px}
-.div-hero-name{display:flex;align-items:center;gap:10px;font-size:2rem;font-weight:800;letter-spacing:.01em}
-.div-hero-name img{height:44px;width:44px}
-.div-hero-by{font-size:.72rem;font-weight:800;letter-spacing:.14em;color:var(--grey);text-transform:uppercase}
+.div-hero-brand{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:28px}
+.div-hero-name{display:flex;align-items:center;gap:16px;font-size:2.9rem;font-weight:800;letter-spacing:.01em}
+.div-hero-name img{height:52px;width:52px}
+.div-hero-by{font-size:.8rem;font-weight:800;letter-spacing:.16em;color:var(--grey);text-transform:uppercase}
 
-.hero-card{background:var(--light);border-radius:28px;padding:64px 56px}
-@media(max-width:700px){.hero-card{padding:44px 24px}}
+.hero-card{background:var(--light);border-radius:28px;padding:80px 60px}
+.hero-card h1{font-size:clamp(2.2rem,5.2vw,3.75rem);max-width:920px}
+.hero-card p.sub{max-width:720px;font-size:1.3rem;margin-top:32px}
+.hero-card .sub2{font-size:1.05rem;margin-top:14px}
+.hero-card .btn{padding:17px 34px;font-size:1.05rem;border-radius:10px}
+@media(max-width:700px){.hero-card{padding:48px 24px}.div-hero-name{font-size:1.8rem}.div-hero-name img{height:36px;width:36px}}
 
 section{padding:56px 0}
 section.tint{background:var(--light)}
